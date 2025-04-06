@@ -34,6 +34,10 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
         }
 
         .podium img {
@@ -45,7 +49,7 @@
 
         .podium-name {
             margin-top: 10px;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
             color: #6F4F28; /* Darker Warm Brown */
         }
@@ -110,6 +114,11 @@
         .podium:nth-child(3) {
             height: 220px; /* 3rd place podium height */
             z-index: 1;
+        }
+
+        /* Ensuring the podiums align at the bottom */
+        .podium-container {
+            align-items: flex-end;
         }
 
         @media (max-width: 768px) {
