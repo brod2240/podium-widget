@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podium Book Widget</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .podium-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: flex-end;
+            height: 400px;
+        }
+
+        .podium {
+            width: 150px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            background-color: #C4A5D3;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .podium img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+            height: 250px;
+        }
+
+        .podium-title {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #4b2e83;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 0 10px;
+        }
+
+        .input-container input {
+            padding: 5px;
+            border: 1px solid #4b2e83;
+            border-radius: 5px;
+        }
+
+        .input-container button {
+            padding: 10px;
+            background-color: #4b2e83;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .input-container button:hover {
+            background-color: #6a4f94;
+        }
+
+        .podium:nth-child(1) {
+            height: 300px; /* 1st place podium height */
+        }
+
+        .podium:nth-child(2) {
+            height: 260px; /* 2nd place podium height */
+        }
+
+        .podium:nth-child(3) {
+            height: 220px; /* 3rd place podium height */
+        }
+    </style>
+</head>
+<body>
+
+<div class="podium-container">
+    <div class="podium" id="first-place">
+        <img src="" alt="1st place book" id="cover-1">
+        <div class="podium-title" id="title-1">1st Place</div>
+    </div>
+
+    <div class="podium" id="second-place">
+        <img src="" alt="2nd place book" id="cover-2">
+        <div class="podium-title" id="title-2">2nd Place</div>
+    </div>
+
+    <div class="podium" id="third-place">
+        <img src="" alt="3rd place book" id="cover-3">
+        <div class="podium-title" id="title-3">3rd Place</div>
+    </div>
+</div>
+
+<div class="input-container">
+    <div>
+        <label for="cover-upload-1">Upload Book Cover for 1st Place</label>
+        <input type="file" id="cover-upload-1">
+        <input type="text" id="title-input-1" placeholder="Enter Title for 1st Place">
+    </div>
+    <div>
+        <label for="cover-upload-2">Upload Book Cover for 2nd Place</label>
+        <input type="file" id="cover-upload-2">
+        <input type="text" id="title-input-2" placeholder="Enter Title for 2nd Place">
+    </div>
+    <div>
+        <label for="cover-upload-3">Upload Book Cover for 3rd Place</label>
+        <input type="file" id="cover-upload-3">
+        <input type="text" id="title-input-3" placeholder="Enter Title for 3rd Place">
+    </div>
+    <button onclick="updatePodium()">Update Podium</button>
+</div>
+
+<script>
+    function updatePodium() {
+        // 1st Place
+        const cover1 = document.getElementById('cover-upload-1').files[0];
+        const title1 = document.getElementById('title-input-1').value;
+        if (cover1) {
+            document.getElementById('cover-1').src = URL.createObjectURL(cover1);
+        }
+        if (title1) {
+            document.getElementById('title-1').textContent = title1;
+        }
+
+        // 2nd Place
+        const cover2 = document.getElementById('cover-upload-2').files[0];
+        const title2 = document.getElementById('title-input-2').value;
+        if (cover2) {
+            document.getElementById('cover-2').src = URL.createObjectURL(cover2);
+        }
+        if (title2) {
+            document.getElementById('title-2').textContent = title2;
+        }
+
+        // 3rd Place
+        const cover3 = document.getElementById('cover-upload-3').files[0];
+        const title3 = document.getElementById('title-input-3').value;
+        if (cover3) {
+            document.getElementById('cover-3').src = URL.createObjectURL(cover3);
+        }
+        if (title3) {
+            document.getElementById('title-3').textContent = title3;
+        }
+    }
+</script>
+
+</body>
+</html>
