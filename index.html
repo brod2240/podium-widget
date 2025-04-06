@@ -191,15 +191,36 @@
 </div>
 
 <script>
+    // Load saved data from localStorage (if any)
+    window.onload = function() {
+        if (localStorage.getItem('cover1')) {
+            document.getElementById('cover-1').src = localStorage.getItem('cover1');
+            document.getElementById('title-1').textContent = localStorage.getItem('title1');
+            document.getElementById('title-input-1').value = localStorage.getItem('title1');
+        }
+        if (localStorage.getItem('cover2')) {
+            document.getElementById('cover-2').src = localStorage.getItem('cover2');
+            document.getElementById('title-2').textContent = localStorage.getItem('title2');
+            document.getElementById('title-input-2').value = localStorage.getItem('title2');
+        }
+        if (localStorage.getItem('cover3')) {
+            document.getElementById('cover-3').src = localStorage.getItem('cover3');
+            document.getElementById('title-3').textContent = localStorage.getItem('title3');
+            document.getElementById('title-input-3').value = localStorage.getItem('title3');
+        }
+    };
+
     function updatePodium() {
         // 1st Place
         const cover1 = document.getElementById('cover-upload-1').files[0];
         const title1 = document.getElementById('title-input-1').value;
         if (cover1) {
             document.getElementById('cover-1').src = URL.createObjectURL(cover1);
+            localStorage.setItem('cover1', URL.createObjectURL(cover1)); // Save to localStorage
         }
         if (title1) {
             document.getElementById('title-1').textContent = title1;
+            localStorage.setItem('title1', title1); // Save to localStorage
         }
 
         // 2nd Place
@@ -207,9 +228,11 @@
         const title2 = document.getElementById('title-input-2').value;
         if (cover2) {
             document.getElementById('cover-2').src = URL.createObjectURL(cover2);
+            localStorage.setItem('cover2', URL.createObjectURL(cover2)); // Save to localStorage
         }
         if (title2) {
             document.getElementById('title-2').textContent = title2;
+            localStorage.setItem('title2', title2); // Save to localStorage
         }
 
         // 3rd Place
@@ -217,9 +240,11 @@
         const title3 = document.getElementById('title-input-3').value;
         if (cover3) {
             document.getElementById('cover-3').src = URL.createObjectURL(cover3);
+            localStorage.setItem('cover3', URL.createObjectURL(cover3)); // Save to localStorage
         }
         if (title3) {
             document.getElementById('title-3').textContent = title3;
+            localStorage.setItem('title3', title3); // Save to localStorage
         }
     }
 </script>
