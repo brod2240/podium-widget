@@ -21,7 +21,7 @@
         .podium-container {
             display: flex;
             justify-content: center;
-            align-items: flex-end;
+            align-items: flex-end; /* Ensures podiums are aligned at the bottom */
             gap: 30px;
             margin-bottom: 40px; /* Padding between podiums and inputs */
         }
@@ -121,6 +121,13 @@
             align-items: flex-end;
         }
 
+        .align-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
         @media (max-width: 768px) {
             .podium-container {
                 flex-direction: column;
@@ -139,44 +146,46 @@
 </head>
 <body>
 
-<div class="podium-container">
-    <!-- First Place Podium (Center) -->
-    <div class="podium" id="first-place">
-        <img src="" alt="1st place book" id="cover-1">
-        <div class="podium-name" id="title-1">1st Place</div>
+<div class="align-column">
+    <div class="podium-container">
+        <!-- First Place Podium (Center) -->
+        <div class="podium" id="first-place">
+            <img src="" alt="1st place book" id="cover-1">
+            <div class="podium-name" id="title-1">1st Place</div>
+        </div>
+
+        <!-- Second Place Podium (Left) -->
+        <div class="podium" id="second-place">
+            <img src="" alt="2nd place book" id="cover-2">
+            <div class="podium-name" id="title-2">2nd Place</div>
+        </div>
+
+        <!-- Third Place Podium (Right) -->
+        <div class="podium" id="third-place">
+            <img src="" alt="3rd place book" id="cover-3">
+            <div class="podium-name" id="title-3">3rd Place</div>
+        </div>
     </div>
 
-    <!-- Second Place Podium (Left) -->
-    <div class="podium" id="second-place">
-        <img src="" alt="2nd place book" id="cover-2">
-        <div class="podium-name" id="title-2">2nd Place</div>
+    <!-- Inputs Below Podiums -->
+    <div class="input-container">
+        <div>
+            <label for="cover-upload-1">Upload Book Cover for 1st Place</label>
+            <input type="file" id="cover-upload-1">
+            <input type="text" id="title-input-1" placeholder="Enter Title for 1st Place">
+        </div>
+        <div>
+            <label for="cover-upload-2">Upload Book Cover for 2nd Place</label>
+            <input type="file" id="cover-upload-2">
+            <input type="text" id="title-input-2" placeholder="Enter Title for 2nd Place">
+        </div>
+        <div>
+            <label for="cover-upload-3">Upload Book Cover for 3rd Place</label>
+            <input type="file" id="cover-upload-3">
+            <input type="text" id="title-input-3" placeholder="Enter Title for 3rd Place">
+        </div>
+        <button onclick="updatePodium()">Update Podium</button>
     </div>
-
-    <!-- Third Place Podium (Right) -->
-    <div class="podium" id="third-place">
-        <img src="" alt="3rd place book" id="cover-3">
-        <div class="podium-name" id="title-3">3rd Place</div>
-    </div>
-</div>
-
-<!-- Inputs Below Podiums -->
-<div class="input-container">
-    <div>
-        <label for="cover-upload-1">Upload Book Cover for 1st Place</label>
-        <input type="file" id="cover-upload-1">
-        <input type="text" id="title-input-1" placeholder="Enter Title for 1st Place">
-    </div>
-    <div>
-        <label for="cover-upload-2">Upload Book Cover for 2nd Place</label>
-        <input type="file" id="cover-upload-2">
-        <input type="text" id="title-input-2" placeholder="Enter Title for 2nd Place">
-    </div>
-    <div>
-        <label for="cover-upload-3">Upload Book Cover for 3rd Place</label>
-        <input type="file" id="cover-upload-3">
-        <input type="text" id="title-input-3" placeholder="Enter Title for 3rd Place">
-    </div>
-    <button onclick="updatePodium()">Update Podium</button>
 </div>
 
 <script>
