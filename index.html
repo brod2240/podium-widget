@@ -6,14 +6,16 @@
     <title>Podium Book Widget</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: transparent; /* Transparent background */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: transparent; /* Transparent background */
+            padding: 20px;
             flex-direction: column;
+            color: #333;
         }
 
         .podium-container {
@@ -21,81 +23,107 @@
             justify-content: center;
             align-items: flex-end;
             gap: 30px;
-            margin-bottom: 20px;
-            position: relative;
+            margin-bottom: 40px; /* Padding between podiums and inputs */
         }
 
         .podium {
-            width: 150px;
+            width: 160px;
             text-align: center;
-            border-radius: 10px 10px 0 0;
-            background-color: #C4A5D3;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px 12px 0 0;
+            background-color: #D6A77A; /* Warm Brown */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
             position: relative;
+            overflow: hidden;
         }
 
         .podium img {
             width: 100%;
             height: 250px;
-            border-radius: 10px;
+            border-radius: 12px;
             object-fit: cover;
         }
 
         .podium-title {
-            margin-top: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #4b2e83;
+            margin-top: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #6F4F28; /* Darker Warm Brown */
         }
 
         .input-container {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            justify-content: center;
             align-items: center;
+            gap: 20px;
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
         }
 
         .input-container input {
-            padding: 10px;
-            border: 1px solid #4b2e83;
-            border-radius: 5px;
+            padding: 12px;
+            border: 1px solid #6F4F28; /* Dark Brown Border */
+            border-radius: 8px;
             width: 80%;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-container input:focus {
+            border-color: #8B5E3C; /* Lighter Brown Focus */
+            outline: none;
         }
 
         .input-container button {
-            padding: 10px;
-            background-color: #4b2e83;
+            padding: 12px;
+            background-color: #6F4F28; /* Dark Brown Button */
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s;
+            font-size: 16px;
             width: 80%;
-            max-width: 200px;
+            max-width: 250px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .input-container button:hover {
-            background-color: #6a4f94;
+            background-color: #8B5E3C; /* Lighter Brown Hover */
+            transform: translateY(-2px);
         }
 
-        /* Position for the podiums */
+        .input-container button:active {
+            transform: translateY(2px);
+        }
+
+        /* Podium styles for layering */
         .podium:nth-child(1) {
             height: 300px; /* 1st place podium height */
-            z-index: 3; /* Make 1st place podium in the front */
+            z-index: 3;
         }
 
         .podium:nth-child(2) {
             height: 260px; /* 2nd place podium height */
-            z-index: 2; /* Make 2nd place behind the 1st place */
+            z-index: 2;
         }
 
         .podium:nth-child(3) {
             height: 220px; /* 3rd place podium height */
-            z-index: 1; /* Make 3rd place behind the 1st and 2nd place */
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .podium-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .input-container button {
+                max-width: 200px;
+            }
+
+            .input-container input {
+                width: 90%;
+            }
         }
     </style>
 </head>
